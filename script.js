@@ -20,7 +20,15 @@ document.getElementById('nextBtn').addEventListener('click', () => {
   document.getElementById('topic').textContent = topics[randomIndex];
 });
 
-// ルール表示
+// モーダル開閉
+const modal = document.getElementById('modal');
 document.getElementById('rules').addEventListener('click', () => {
-  alert("【ロジカルバナナの遊び方】\n\n出てきたお題について「AだからB」と理由づけして答えましょう。\n例：「バナナといったら → 種がないから食べやすい」");
+  modal.style.display = 'flex';
+});
+document.getElementById('closeModal').addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+// モーダル外クリックで閉じる
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.style.display = 'none';
 });
