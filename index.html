@@ -53,12 +53,55 @@
       user-select: none;
     }
 
-    /* スマホでのタップ余白拡大 */
-    @media (hover: none) {
-      button:active {
-        transform: scale(0.97);
-        background-color: #ffe97f;
-      }
+    /* === モーダル === */
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #modalContent {
+      background: #fffef0;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      padding: 24px;
+      text-align: left;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    #modalContent h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #d4aa00;
+    }
+
+    .example {
+      margin: 18px 0;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: #fffde7;
+    }
+
+    .good { border-left: 6px solid #66bb6a; }
+    .okay { border-left: 6px solid #ffa726; }
+    .bad { border-left: 6px solid #ef5350; }
+
+    #closeModal {
+      display: block;
+      margin: 24px auto 0;
+      padding: 10px 20px;
+      background-color: #ffd54f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -67,6 +110,34 @@
   <div id="topic">ここにお題が出ます</div>
   <button id="nextBtn">お題を出す！</button>
   <div id="rules">ルールを見る</div>
+
+  <!-- ルールモーダル -->
+  <div id="modal">
+    <div id="modalContent">
+      <h2>🍌 ロジカルバナナのルール 🍌</h2>
+      <p>お題に対して、「○○だから××」と理由を考えましょう。<br>誰もが納得できる“論理的なつながり”を意識してみよう！</p>
+
+      <div class="example good">
+        <strong>とても良い例：</strong><br>
+        「バナナといったら → 種が無いから 食べやすい」<br>
+        <em>▶ 種が無いのは誰が見ても明らかで、説得力があります。</em>
+      </div>
+
+      <div class="example okay">
+        <strong>まあ良い例：</strong><br>
+        「バナナといったら → 安いから 買いやすい」<br>
+        <em>▶ 一定の説得力はありますが、何と比べて安いのかなど注意が必要です。</em>
+      </div>
+
+      <div class="example bad">
+        <strong>イマイチな例：</strong><br>
+        「バナナといったら → おいしいから みんな大好き」<br>
+        <em>▶ 根拠が弱く、説得力に欠けます。目に見える事実や数値を示しましょう。</em>
+      </div>
+
+      <button id="closeModal">閉じる</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
